@@ -1,0 +1,171 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f0f0f08e;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  text-align: center;
+}
+
+.game-board-container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 40px auto;
+  width: 90%;
+}
+
+@media (max-width: 700px) {
+  .game-board-container {
+    padding: 10px;
+    max-width: 98vw;
+  }
+  .game-board {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 98vw;
+    gap: 10px;
+  }
+  .card {
+    height: 70px;
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .game-board-container {
+    padding: 5px;
+    border-radius: 5px;
+  }
+  .game-board {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .card {
+    height: 50px;
+    font-size: 1rem;
+  }
+}
+
+h1 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.game-board {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Adjust for number of cards */
+  gap: 15px;
+  margin-bottom: 20px;
+  max-width: 500px; /* Or adjust as needed */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card {
+  background-color: #2bcbf3; /* Default card back color */
+  color: white;
+  height: 100px; /* Or adjust as needed */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem; /* Adjust for symbol size */
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.5s, background-color 0.3s;
+  perspective: 1000px; /* For 3D flip effect */
+  user-select: none; /* Prevent text selection */
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+}
+
+.card-front {
+  background-color: #4cc8f5; /* Back of the card */
+  color: white; /* Text/Symbol on the back, if any */
+}
+
+.card-back {
+  background-color: #e9ecef; /* Face of the card when flipped */
+  color: #333;
+  transform: rotateY(180deg);
+}
+
+
+.card.matched .card-inner {
+  transform: rotateY(180deg); /* Keep it flipped */
+}
+
+.card.matched .card-back {
+  background-color: #28a745; /* Matched color */
+  color: white;
+  cursor: default;
+}
+
+.card.flipped:not(.matched) .card-back {
+  background-color: #ffc107; /* Flipped but not yet matched color */
+}
+
+
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.status-message {
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+  color: #555;
+  min-height: 1.5em; /* Reserve space to prevent layout shifts */
+}
+
+.moves-counter {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 20px;
+}
