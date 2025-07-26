@@ -19,3 +19,4 @@ A fun and interactive memory card game built with ReactJS. Test your memory skil
 5. **Win the Game**  
     The game ends when all pairs are found. Try to complete the game in the least number of moves!
 
+![Here is the image](https://raw.githubusercontent.com/arunvalluthadam/memory-card-game/refs/heads/main/public/vite.svg)
